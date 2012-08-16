@@ -114,7 +114,11 @@ class XmlSerializationVisitor extends AbstractSerializationVisitor
         $keyAttributeName = (null !== $this->currentMetadata && null !== $this->currentMetadata->xmlKeyAttribute) ? $this->currentMetadata->xmlKeyAttribute : null;
 
         foreach ($data as $k => $v) {
-            $tagName = (null !== $this->currentMetadata && $this->currentMetadata->xmlKeyValuePairs && $this->isElementNameValid($k)) ? $k : $entryName;
+            if (null !== $this->currentMetadata && $this->currentMetadata->xmlEntryNameXmlRoot) {
+                $tagName = $this->navigator->getMetadataForClass(get_class($v))->xmlRootName;
+            } else {
+                $tagName = (null !== $this->currentMetadata && $this->currentMetadata->xmlKeyValuePairs && $this->isElementNameValid($k)) ? $k : $entryName;
+            }
 
             $entryNode = $this->document->createElement($tagName);
             $this->currentNode->appendChild($entryNode);

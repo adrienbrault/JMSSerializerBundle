@@ -135,6 +135,10 @@ class XmlDriver extends AbstractFileDriver
                         if (isset($colConfig->attributes()->{'entry-name'})) {
                             $pMetadata->xmlEntryName = (string) $colConfig->attributes()->{'entry-name'};
                         }
+
+                        if (isset($colConfig->attributes()->{'entry-name-xml-root'})) {
+                            $pMetadata->xmlEntryNameXmlRoot = (Boolean) $colConfig->attributes()->{'entry-name-xml-root'};
+                        }
                     }
 
                     if (isset($pElem->{'xml-map'})) {

@@ -24,6 +24,7 @@ abstract class XmlCollection
 {
     public $inline = false;
     public $entry = 'entry';
+    public $entryXmlRoot = false;
 
     public function __construct(array $values)
     {
@@ -39,6 +40,13 @@ abstract class XmlCollection
                 throw new InvalidArgumentException(sprintf('Value for attribute "inline" must be a boolean, but got %s.', json_encode($values['inline'])));
             }
             $this->inline = $values['inline'];
+        }
+
+        if (isset($values['entryXmlRoot'])) {
+            if (!is_bool($values['entryXmlRoot'])) {
+                throw new InvalidArgumentException(sprintf('Value for attribute "entryXmlRoot" must be a boolean, but got %s.', json_encode($values['entryXmlRoot'])));
+            }
+            $this->inline = $values['entryXmlRoot'];
         }
     }
 }

@@ -125,6 +125,10 @@ class YamlDriver extends AbstractFileDriver
                         if (isset($colConfig['entry_name'])) {
                             $pMetadata->xmlEntryName = (string) $colConfig['entry_name'];
                         }
+
+                        if (isset($colConfig['entry_name_xml_root'])) {
+                            $pMetadata->xmlEntryNameXmlRoot = (Boolean) $colConfig['entry_name_xml_root'];
+                        }
                     }
 
                     if (isset($pConfig['xml_map'])) {

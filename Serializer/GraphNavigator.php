@@ -30,7 +30,7 @@ final class GraphNavigator
 
     private $direction;
     private $exclusionStrategy;
-    private $metadataFactory;
+    public $metadataFactory;
     private $visiting;
 
     public function __construct($direction, MetadataFactoryInterface $metadataFactory, ExclusionStrategyInterface $exclusionStrategy = null)

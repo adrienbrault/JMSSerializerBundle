@@ -146,6 +146,7 @@ class AnnotationDriver implements DriverInterface
                         $propertyMetadata->xmlCollection = true;
                         $propertyMetadata->xmlCollectionInline = $annot->inline;
                         $propertyMetadata->xmlEntryName = $annot->entry;
+                        $propertyMetadata->xmlEntryNameXmlRoot = $annot->entryXmlRoot;
                     } else if ($annot instanceof XmlMap) {
                         $propertyMetadata->xmlCollection = true;
                         $propertyMetadata->xmlCollectionInline = $annot->inline;
