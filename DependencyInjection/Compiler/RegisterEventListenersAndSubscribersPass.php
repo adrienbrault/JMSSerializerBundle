@@ -48,9 +48,12 @@ class RegisterEventListenersAndSubscribersPass implements CompilerPassInterface
 
         if ($listeners) {
             ksort($listeners);
+            $listeners = call_user_func_array('array_merge', $listeners);
+            $evenDispatcherDefinition = $container->getDefinition('jms_serializer.event_dispatcher');
 
-            $container->getDefinition('jms_serializer.event_dispatcher')
-                ->addMethodCall('setListeners', array(call_user_func_array('array_merge', $listeners)));
+            foreach ($listeners as $listener) {
+                $evenDispatcherDefinition->addMethodCall('addListener', $listener);
+            }
         }
     }
 }
